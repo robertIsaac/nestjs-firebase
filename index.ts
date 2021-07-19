@@ -4,14 +4,21 @@ import * as express from 'express';
 import * as functions from 'firebase-functions';
 
 import { AppModule } from './src/app.module';
+import { credential, initializeApp } from 'firebase-admin';
 
 const expressServer = express();
+
+initializeApp({
+  credential: credential.cert(functions.config().my_firebase_config),
+  databaseURL: 'https://nestjs-20698-default-rtdb.firebaseio.com',
+});
 
 const createFunction = async (expressInstance): Promise<void> => {
   const app = await NestFactory.create(
     AppModule,
     new ExpressAdapter(expressInstance),
   );
+  app.enableCors();
 
   await app.init();
 };
