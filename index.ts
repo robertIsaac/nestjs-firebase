@@ -5,6 +5,7 @@ import * as functions from 'firebase-functions';
 
 import { AppModule } from './src/app.module';
 import { credential, initializeApp } from 'firebase-admin';
+import { ValidationPipe } from '@nestjs/common';
 
 const expressServer = express();
 
@@ -19,7 +20,7 @@ const createFunction = async (expressInstance): Promise<void> => {
     new ExpressAdapter(expressInstance),
   );
   app.enableCors();
-
+  app.useGlobalPipes(new ValidationPipe());
   await app.init();
 };
 
