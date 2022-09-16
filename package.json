@@ -42,7 +42,7 @@
     "class-validator": "^0.13.1",
     "firebase-admin": "^9.8.0",
     "firebase-functions": "^3.14.1",
-    "passport": "^0.4.1",
+    "passport": "^0.6.0",
     "passport-firebase-jwt": "^1.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
